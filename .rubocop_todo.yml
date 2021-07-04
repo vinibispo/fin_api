@@ -12,6 +12,7 @@ AllCops:
 
 require:
   - rubocop-rails
+  - rubocop-minitest
 Rails/UniqueValidationWithoutIndex:
   Enabled: false
 
