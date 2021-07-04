@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module Statements
+  # controller for create withdraws
   class WithdrawsController < ApplicationController
     before_action :set_account
     def create
@@ -15,7 +18,7 @@ module Statements
     def set_account
       cpf = request.headers['cpf']
       @account = Account.find_by(cpf: cpf)
-      render json: { message: 'Account not found' }, status: :not_found unless @account.present?
+      render json: { message: 'Account not found' }, status: :not_found if @account.blank?
     end
 
     def withdraw_params

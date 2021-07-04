@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   resources :accounts, only: %i[create update destroy show]
   resources :statements, only: %i[index]

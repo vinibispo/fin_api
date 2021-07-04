@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# controller for statements
 class StatementsController < ApplicationController
   before_action :set_account
   def index
@@ -13,7 +16,7 @@ class StatementsController < ApplicationController
   def set_account
     cpf = request.headers['cpf']
     @account = Account.find_by(cpf: cpf)
-    render json: { message: 'Account not found' }, status: :not_found unless @account.present?
+    render json: { message: 'Account not found' }, status: :not_found if @account.blank?
   end
 
   def find_statements_by_date

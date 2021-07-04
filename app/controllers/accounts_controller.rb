@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# controller for create, show, update and destroy an account
 class AccountsController < ApplicationController
   before_action :set_account, only: %i[show update destroy]
   def create
@@ -35,6 +38,6 @@ class AccountsController < ApplicationController
 
   def set_account
     @account = Account.find_by(id: params[:id])
-    render json: { message: 'Account not found' }, status: :not_found unless @account.present?
+    render json: { message: 'Account not found' }, status: :not_found if @account.blank?
   end
 end
