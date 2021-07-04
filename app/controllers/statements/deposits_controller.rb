@@ -3,6 +3,7 @@
 module Statements
   # controller for create debosit
   class DepositsController < ApplicationController
+    include AccountUtils
     before_action :set_account
     def create
       @deposit = @account.statements.new(deposit_params)
@@ -14,12 +15,6 @@ module Statements
     end
 
     private
-
-    def set_account
-      cpf = request.headers['cpf']
-      @account = Account.find_by(cpf: cpf)
-      render json: { message: 'Account not found' }, status: :not_found if @account.blank?
-    end
 
     def deposit_params
       params.require(:deposit).permit(:description, :amount, statement_type: 'deposit')

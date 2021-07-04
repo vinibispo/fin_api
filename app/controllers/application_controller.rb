@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# heart of controllers
 class ApplicationController < ActionController::API
   before_action :set_default_format
 

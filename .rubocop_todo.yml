@@ -21,11 +21,6 @@ Style/Documentation:
     - 'spec/**/*'
     - 'test/**/*'
     - 'db/migrate/*'
-    - 'app/controllers/application_controller.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
 
 Style/FrozenStringLiteralComment:
   EnforcedStyle: always_true
-
-

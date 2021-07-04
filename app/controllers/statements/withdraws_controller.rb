@@ -3,6 +3,7 @@
 module Statements
   # controller for create withdraws
   class WithdrawsController < ApplicationController
+    include AccountUtils
     before_action :set_account
     def create
       @withdraw = @account.statements.new(withdraw_params.merge(statement_type: 'withdraw'))
@@ -14,12 +15,6 @@ module Statements
     end
 
     private
-
-    def set_account
-      cpf = request.headers['cpf']
-      @account = Account.find_by(cpf: cpf)
-      render json: { message: 'Account not found' }, status: :not_found if @account.blank?
-    end
 
     def withdraw_params
       params.require(:withdraw).permit(:description, :amount, statement_type: 1)
